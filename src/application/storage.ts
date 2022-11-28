@@ -1,8 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { RedisService } from 'src/infra/redis/redis.service';
 
 @Injectable()
-export class ApplicationRedis {
+export class StorageApp {
   constructor(private redisService: RedisService) {}
   getAll() {
     return this.redisService.getAll();
@@ -12,7 +12,7 @@ export class ApplicationRedis {
   }
 
   save(data) {
-    // TOD
+    return this.redisService.save(data);
   }
   update(data: any, id: any) {
     // TODO

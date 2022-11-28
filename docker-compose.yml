@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  redis:
+    image: 'redis'
+    restart: always
+    environment:
+    - REDIS_PORT_NUMBER=7000
+    - REDIS_PASSWORD=123456
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./data:/data
