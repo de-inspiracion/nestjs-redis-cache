@@ -1,9 +1,9 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { RedisService } from 'src/infra/redis/redis.service';
+import { RedisServiceI } from 'src/domain/redis.service.interface';
 
 @Injectable()
 export class StorageApp {
-  constructor(private redisService: RedisService) {}
+  constructor(@Inject('redisRepository') private redisService: RedisServiceI) {}
   getAll() {
     return this.redisService.getAll();
   }

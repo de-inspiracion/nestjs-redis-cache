@@ -12,7 +12,13 @@ import { RedisService } from './redis.service';
       ttl: 2400,
     }),
   ],
-  providers: [RedisService],
-  exports: [RedisService, CacheModule],
+  providers: [
+    RedisService,
+    { provide: 'redisRepository', useClass: RedisService },
+  ],
+  exports: [
+    CacheModule,
+    { provide: 'redisRepository', useClass: RedisService },
+  ],
 })
 export class RedisModule {}
